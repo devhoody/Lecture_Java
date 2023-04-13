@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Program {
 
 	public static void main(String[] args) {
-		
+
 		ExamList list = new ExamList();
 
 		int menu;
@@ -18,11 +18,11 @@ public class Program {
 			switch (menu) {
 			case 1:
 
-				//ExamList.InputList(list);
+				// ExamList.InputList(list);
 				list.InputList();
 				break;
 			case 2:
-
+				// ExamList.PrintList(list);
 				list.PrintList();
 				break;
 			case 3:
@@ -39,7 +39,6 @@ public class Program {
 		}
 	}
 
-	
 	static int InputMenu() {
 		Scanner scan = new Scanner(System.in);
 
