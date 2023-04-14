@@ -5,25 +5,22 @@ import java.util.Scanner;
 //
 public class ExamList {
 	Exam[] exams;
-	int current = 0;
+	int current;
 	
-	 void PrintList() {
-		PrintList(this,this.current);
-	}
-	static void PrintList(ExamList list) {
-		PrintList(list,list.current);
+	void PrintList() {
+		this.PrintList(this.current);
 	}
 
-	static void PrintList(ExamList list, int size) {
+	void PrintList(int size) {
 		System.out.println("┌───────────────────────────┐");
 		System.out.println("│           성적  출력                   │");
 		System.out.println("└───────────────────────────┘");
 		System.out.println();
 		
-		Exam[] exams = list.exams;
+		Exam[] exams = this.exams;
 		
 		for (int i=0; i<size; i++) { 
-			Exam exam = list.exams[i];
+			Exam exam = this.exams[i];
 			int kor = exam.kor;
 			int eng = exam.eng;
 			int math = exam.math;
@@ -106,11 +103,16 @@ public class ExamList {
 
 	}
 	
-	public void ExamList(){
-		this.exams = new Exam[3];
+	public ExamList(){
+		this(3);
+	}
+	
+	public ExamList(int size){
+		this.exams = new Exam[size];
 		this.current = 0;
 		
 	}
+	
 
 }
 
