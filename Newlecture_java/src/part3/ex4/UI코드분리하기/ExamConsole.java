@@ -4,7 +4,11 @@ import java.util.Scanner;
 
 public class ExamConsole {
 	
-	private ExamList list = new ExamList();
+	private ExamList list;
+	
+	public ExamConsole() {
+		list = new ExamList();
+	}
 	
 	void PrintList() {
 		PrintList(list.size());
