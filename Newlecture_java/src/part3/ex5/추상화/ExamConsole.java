@@ -33,13 +33,16 @@ public abstract class ExamConsole {
 			System.out.printf("措橫 = %d\n", kor);
 			System.out.printf("艙橫 = %d\n", eng);
 			System.out.printf("熱з = %d\n", math);
-
+			
+			onPrint(exam);
 			System.out.printf("識薄 : %3d\n", total);
 			System.out.printf("ゎ敕 : %6.2f\n", avg);
 			System.out.println("式式式式式式式式式式式式式式式式式式式式式式式式式式式式式");
 		}
 	}
 	
+	
+
 	void Input() {
 		Scanner scan = new Scanner(System.in);
 
@@ -82,6 +85,7 @@ public abstract class ExamConsole {
 		exam.setKor(kor);
 		exam.setEng(eng);
 		exam.setMath(math);
+		onInput(exam);
 
 //		-----------------------add--------------------------------------------
 		
@@ -90,5 +94,7 @@ public abstract class ExamConsole {
 		
 	}
 
+	protected abstract void onInput(Exam exam);
+	protected abstract void onPrint(Exam exam);
 	protected abstract Exam makeExam();
 }
