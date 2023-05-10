@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class ListProgram {
 
 	public static void main(String[] args) {
-		
 		ExamList list = new ExamList();
 		list.exams = new Exam[3];
 		list.current = 0;
@@ -25,7 +24,7 @@ public class ListProgram {
 				break;
 			case 2:
 
-				PrintList(list, 2);
+				PrintList(list);
 
 				break;
 			case 3:
@@ -42,22 +41,20 @@ public class ListProgram {
 		}
 	}
 
-	static void PrintList(ExamList list) {
-		PrintList(list,list.current);
-	}
-
-	static void PrintList(ExamList list, int size) {
+	private static void PrintList(ExamList list) {
 		System.out.println("┌───────────────────────────┐");
 		System.out.println("│           성적  출력                   │");
 		System.out.println("└───────────────────────────┘");
 		System.out.println();
 		
+		int size = list.current;
 		Exam[] exams = list.exams;
 		
-		for (int i=0; i<size; i++) { 
+		
+		for (int i=0; i<size; i++) { // exams.length 왜안써? 방의개수 아는게 아니라 데이터 개수를 알아야하는 것이기 때문.
+			Exam exam = exams[i];
 			
-			Exam exam = list.exams[i];
-			
+			//반복되는 과정에서 연산이 되는게 아님 int kor이 계속 만들어지는게 아니라는 말임 
 			int kor = exam.kor;
 			int eng = exam.eng;
 			int math = exam.math;
@@ -75,9 +72,11 @@ public class ListProgram {
 		}
 	}
 
-	
-	static void InputList(ExamList list) {
+	private static void InputList(ExamList list) {
 		Scanner scan = new Scanner(System.in);
+		
+		
+	
 		System.out.println("┌───────────────────────────┐");
 		System.out.println("│           성적  입력                   │");
 		System.out.println("└───────────────────────────┘");
@@ -117,22 +116,9 @@ public class ListProgram {
 			exam.eng = eng;
 			exam.math = math;
 			
-			Exam[] exams = list.exams;
-			int size = list.current;
-			
-			if(exams.length == size) {
-				//1. 크기가 5개 정도 더 큰 새로운 배열을 생성하시오.
-				Exam[] temp = new Exam[size + 5];
-				//2. 값을 이주시키기
-				for(int i=0; i<3; i++) 
-					temp[i] = exams[i];
-				//3. list.exams가 새로만든 temp배열을 참조.
-				list.exams =temp; //exams는 안됨. 
-			}
-				
 			list.exams[list.current] = exam;
 			list.current++;
-		
+			
 		System.out.println("─────────────────────────────");
 		
 
